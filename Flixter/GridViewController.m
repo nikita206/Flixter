@@ -75,7 +75,7 @@
     
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
-    //[cell.MoviePoster setImageWithURL:posterURL];
+    cell.MoviePoster.image = nil;
     [cell.MoviePoster setImageWithURL:posterURL];
     cell.movieLabel.text = movie[@"title"];
     return cell;
@@ -83,18 +83,6 @@
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.moviesArray.count;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    int totalwidth = self.collectionView.bounds.size.width;
-    int numberOfCellsPerRow = 4;
-    int oddEven = indexPath.row / numberOfCellsPerRow % 2;
-    int dimensions = (CGFloat)(totalwidth / numberOfCellsPerRow);
-    if (oddEven == 0) {
-        return CGSizeMake(dimensions, dimensions);
-    } else {
-        return CGSizeMake(dimensions, dimensions / 2);
-    }
 }
 
 
