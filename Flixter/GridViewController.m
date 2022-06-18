@@ -87,7 +87,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     int totalwidth = self.collectionView.bounds.size.width;
-    int numberOfCellsPerRow = 2;
+    int numberOfCellsPerRow = 4;
     int oddEven = indexPath.row / numberOfCellsPerRow % 2;
     int dimensions = (CGFloat)(totalwidth / numberOfCellsPerRow);
     if (oddEven == 0) {

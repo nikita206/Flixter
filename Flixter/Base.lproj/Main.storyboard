@@ -199,7 +199,6 @@
                                         <connections>
                                             <outlet property="MoviePoster" destination="RQv-5h-cGB" id="YPD-j8-OKu"/>
                                             <outlet property="movieLabel" destination="Hk0-qr-Q6t" id="wSf-Pf-V4Y"/>
-                                            <segue destination="h8Q-on-IWu" kind="show" id="kb4-KW-0up"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -216,22 +215,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g0D-O0-Mpf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4155.072463768116" y="336.83035714285711"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Syj-7c-12T">
-            <objects>
-                <viewController id="h8Q-on-IWu" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="TzB-km-2Ja">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="zTe-N9-ZJj"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="ja9-0B-G4P"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vB4-bT-daU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5135" y="337"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7uY-Am-7TP">

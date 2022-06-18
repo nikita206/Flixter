@@ -2,19 +2,19 @@
 
 **Name of your app** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **X** hours spent in total
+Time spent: 13 hours spent in total
 
 ## User Stories
 
 The following **required** functionality is complete:
 
-- [ ] User sees an app icon on the home screen and a styled launch screen.
-- [ ] User can view a list of movies currently playing in theaters from The Movie Database.
-- [ ] Poster images are loaded using the UIImageView category in the AFNetworking library.
-- [ ] User sees a loading state while waiting for the movies API.
-- [ ] User can pull to refresh the movie list.
-- [ ] User sees an error message when there's a networking error.
-- [ ] User can tap a tab bar button to view a grid layout of Movie Posters using a CollectionView.
+- [YES] User sees an app icon on the home screen and a styled launch screen.
+- [YES] User can view a list of movies currently playing in theaters from The Movie Database.
+- [YES] Poster images are loaded using the UIImageView category in the AFNetworking library.
+- [YES] User sees a loading state while waiting for the movies API.
+- [YES] User can pull to refresh the movie list.
+- [YES] User sees an error message when there's a networking error.
+- [YES] User can tap a tab bar button to view a grid layout of Movie Posters using a CollectionView.
 
 The following **optional** features are implemented:
 
@@ -37,17 +37,6 @@ Please list two areas of the assignment you'd like to **discuss further with you
 1.
 2.
 
-## Video Walkthrough
-
-Here's a walkthrough of implemented user stories:
-
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [Kap](https://getkap.co/).
-
-## Notes
-
-Describe any challenges encountered while building the app.
 
 ## Credits
 
@@ -57,7 +46,7 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2022] [Nikita Agarwal]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
