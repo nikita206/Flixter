@@ -10,12 +10,13 @@
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
 
-@interface MovieViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MovieViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UISearchBar *navigationBar;
 @property (nonatomic, strong) NSArray *moviesArray;
+@property (strong, nonatomic) NSArray *filteredMovies;
 @property (nonatomic,strong) UIRefreshControl *refreshControl;
 
 @end
@@ -26,14 +27,50 @@
     [super viewDidLoad];
     // Start the activity indicator
     [self.activityIndicator startAnimating];
-    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     // Do any additional setup after loading the view.
     [self fetchMovies];
+    self.navigationBar.delegate = self;
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:(UIControlEventValueChanged)];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
+    NSDictionary *movie = self.filteredMovies[indexPath.row];
+    cell.titleLabel.text = movie[@"title"];
+    cell.synopsisLabel.text = movie[@"overview"];
+    
+    NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
+    NSString *posterURLString = movie[@"poster_path"];
+    NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
+    NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
+    cell.posterView.image = nil;
+    [cell.posterView setImageWithURL:posterURL];
+    return cell;
+}
+
+
+- (void)searchBar:(UISearchBar *)navigationBar textDidChange:(NSString *)searchText {
+
+    if (searchText.length != 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
+            return [[evaluatedObject[@"title"] lowercaseString] containsString:[searchText lowercaseString]];
+        }];
+        
+        self.filteredMovies = [self.moviesArray filteredArrayUsingPredicate:predicate];
+        
+        NSLog(@"%@", self.filteredMovies);
+        
+    }
+    else {
+        self.filteredMovies = self.moviesArray;
+    }
+    
+    [self.tableView reloadData];
+ 
 }
 
 -(void)fetchMovies {
@@ -67,6 +104,7 @@
                NSLog(@"%@", dataDictionary);
                // TODO: Store the movies in a property to use elsewhere
                self.moviesArray = dataDictionary[@"results"];
+               self.filteredMovies = self.moviesArray;
                // TODO: Reload your table view data
                [self.tableView reloadData];
                // Stop the activity indicator
@@ -78,23 +116,10 @@
     //5.
     [task resume];
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.moviesArray.count;
-}
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
-    NSDictionary *movie = self.moviesArray[indexPath.row];
-    cell.titleLabel.text = movie[@"title"];
-    cell.synopsisLabel.text = movie[@"overview"];
-    
-    NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
-    NSString *posterURLString = movie[@"poster_path"];
-    NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
-    NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
-    cell.posterView.image = nil;
-    [cell.posterView setImageWithURL:posterURL];
-    return cell;
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.filteredMovies.count;
 }
 
 #pragma mark - Navigation
