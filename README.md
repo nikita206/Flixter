@@ -1,4 +1,4 @@
-# Project 1 - *Name of App Here*
+# Project 1 - *Flixter*
 
 **Name of your app** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
@@ -18,8 +18,8 @@ The following **required** functionality is complete:
 
 The following **optional** features are implemented:
 
-- [ ] User can tap a poster in the collection view to see a detail screen of that movie
-- [ ] User can search for a movie.
+- [YES ] User can tap a poster in the collection view to see a detail screen of that movie
+- [YES ] User can search for a movie.
 - [ ] All images fade in as they are loading.
 - [ ] User can view the large movie poster by tapping on a cell.
 - [ ] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
@@ -36,6 +36,14 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 1.
 2.
+
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='[http://i.imgur.com/link/to/your/gif/file.gif](http://g.recordit.co/9bEzRcVWdD.gif)' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [Kap](https://getkap.co/).
 
 
 ## Credits
